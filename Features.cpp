@@ -39,10 +39,7 @@ public:
     }
 
     bool isLeaf() const {
-        if(left == nullptr && right == nullptr) {
-            return true;
-        }
-        return false;
+        return (left == nullptr && right == nullptr) ? true : false;
     }
 
     void inOrder() const {
@@ -105,10 +102,7 @@ public:
     }
 
     bool isEmpty() const {
-        if(root == nullptr) {
-            return true;
-        }
-        return false;
+        return root == nullptr ? true : false;
     }
 
     int size() const {
@@ -159,7 +153,7 @@ public:
         return false;
     }
 
-    void inOrder() {
+    void inOrder() const {
         if(root == nullptr)
             return;
         root->inOrder();
@@ -256,10 +250,17 @@ public:
     int contaFoglie() const {
         if(root == nullptr)
             return 0;
-        return 1 + root->contaFoglieHelper();
+        return root->contaFoglieHelper();
     }
 
     int contaIntervallo(int low, int high) const {
+        if(root == nullptr)
+            return 0;
         return root->contaIntervalloHelper(low, high);
     }
+
+    ~BST() {
+        svuota();
+    }
 };
+
